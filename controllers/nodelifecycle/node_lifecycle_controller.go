@@ -242,6 +242,7 @@ func ensureNodeExistsByProviderID(ctx context.Context, cloud cloudprovider.Inter
 			klog.Warningf("Cannot find valid providerID for node name %q, assuming non existence", node.Name)
 			return false, nil
 		}
+		node.Spec.ProviderID = providerID
 	}
 
 	return instances.InstanceExistsByProviderID(ctx, providerID)
